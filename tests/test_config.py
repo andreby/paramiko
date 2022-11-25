@@ -653,6 +653,11 @@ class TestHostnameCanonicalization(object):
         assert result["hostname"] == "sub.www"
         assert "user" not in result
 
+    def test_max_dots_may_be_zero_and_hostname_specified(self, socket):
+        result = load_config("zero-maxdots-hostname").lookup("test")
+        assert result["hostname"] == "test.com"
+        assert "user" not in result
+
     def test_fallback_yes_does_not_canonicalize_or_error(self, socket):
         socket.gethostbyname.side_effect = socket.gaierror
         result = load_config("fallback-yes").lookup("www")

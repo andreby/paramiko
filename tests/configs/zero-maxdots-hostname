@@ -1,0 +1,6 @@
+CanonicalDomains net
+CanonicalizeHostname yes
+CanonicalizeMaxDots 0
+
+host test
+  hostname test.com

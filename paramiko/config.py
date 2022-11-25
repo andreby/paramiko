@@ -227,6 +227,8 @@ class SSHConfig(object):
         # during tokenization, for some reason).
         if "hostname" not in options:
             options["hostname"] = hostname
+        # hostname might have changed set during lookup
+        hostname = options["hostname"]
         # Handle canonicalization
         canon = options.get("canonicalizehostname", None) in ("yes", "always")
         maxdots = int(options.get("canonicalizemaxdots", 1))
